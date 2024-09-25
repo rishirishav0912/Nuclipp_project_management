@@ -22,14 +22,16 @@ Installation
 On your VS machine, open a new terminal
 
 Use the following command to clone the repository
-git clone https://github.com/rishirishav0912/
+git clone https://github.com/rishirishav0912/Nuclipp_project_management
 Create a config.env file in server directory
+ADMIN = "rishi111223rr"
+PORT = 4000
 
 write the following in the file
-write the connection of cluster of mongodb in server.js in backend folder
+write the connection string of cluster of mongodb in mongodb.connect in server.js in backend folder
 
 Navigate to the project's root directory:
-cd Blood-Donation-Website
+cd Nuclipp_project_management
 cd frontend
 Run the following command to install the project dependencies using npm:
 npm install
