@@ -1,5 +1,5 @@
 {
-  "proxy": "https://nuclipp-project-management.vercel.app",
+  "proxy": "https://nuclipp-project-management-backend.vercel.app",
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
