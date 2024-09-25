@@ -34,8 +34,9 @@ const useSignup = () => {
         const response = await fetch("https://nuclipp-project-management-backend.vercel.app/register/" + userType, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
+            credentials: "include",
             body: JSON.stringify({ userid, password, name })
         })
 
