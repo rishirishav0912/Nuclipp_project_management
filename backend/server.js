@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(express.json());
 
 const options = {
-    origin:["*"]
+    origin:'*'
 }
 
 app.use(cors(options))
