@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const publicRoutes= require("./routes/public");
 const userRoutes=require("./routes/auth_user");
+const cors = require('cors')
 
 //express app
 const app = express();
@@ -21,6 +22,12 @@ mongoose.connect("mongodb+srv://rishirishav912:Rishi%40912@cluster0.b12kr.mongod
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(express.json());
+
+const options = {
+    origin:["*"]
+}
+
+app.use(cors(options))
 
 app.use("/user",session({secret:"fingerprint_customer",resave: true, saveUninitialized: true}));
 
