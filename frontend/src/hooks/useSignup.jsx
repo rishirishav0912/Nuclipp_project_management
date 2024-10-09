@@ -36,7 +36,7 @@ const useSignup = () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            credentials: "include",
+            // credentials: "include",
             body: JSON.stringify({ userid, password, name })
         })
 
