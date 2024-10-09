@@ -23,12 +23,13 @@ app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(express.json());
 
-const options = {
+// const options = {
     // origin:'https://nuclip-project-management-tool.netlify.app',
     credentials:true
-}
+// }
 
-app.use(cors(options))
+// app.use(cors(options))
+app.use(cors())
 
 app.use("/user",session({secret:"fingerprint_customer",resave: true, saveUninitialized: true}));
 
