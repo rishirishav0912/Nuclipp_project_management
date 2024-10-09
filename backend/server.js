@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(express.json());
 
 const options = {
-    origin:'https://nuclip-project-management-tool.netlify.app',
+    // origin:'https://nuclip-project-management-tool.netlify.app',
     credentials:true
 }
 
