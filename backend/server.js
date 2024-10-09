@@ -21,6 +21,7 @@ mongoose.connect("mongodb+srv://rishirishav912:Rishi%40912@cluster0.b12kr.mongod
 //middleware
 app.use(cors({
     "origin": "*",
+    "preflightContinue": true,
 }))
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
