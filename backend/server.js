@@ -19,6 +19,7 @@ mongoose.connect("mongodb+srv://rishirishav912:Rishi%40912@cluster0.b12kr.mongod
 })
 
 //middleware
+app.use(cors())
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(express.json());
@@ -29,7 +30,6 @@ app.use(express.json());
 // }
 
 // app.use(cors(options))
-app.use(cors())
 
 app.use("/user",session({secret:"fingerprint_customer",resave: true, saveUninitialized: true}));
 
