@@ -25,7 +25,7 @@ app.use(express.json());
 
 // const options = {
     // origin:'https://nuclip-project-management-tool.netlify.app',
-    credentials:true
+    // credentials:true
 // }
 
 // app.use(cors(options))
