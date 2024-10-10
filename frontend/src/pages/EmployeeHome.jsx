@@ -13,7 +13,7 @@ const EmployeeHome = () => {
 
   useEffect(() => {
     const fetchProjects = async () => {
-      const response = await fetch("user/auth/" + user.userType + "/" + user.userid, {
+      const response = await fetch(`${REACT_APP_PROXY_URL}user/auth/` + user.userType + "/" + user.userid, {
         method: 'GET',
         session: {
           authorization: user
