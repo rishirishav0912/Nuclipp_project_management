@@ -11,7 +11,7 @@ const useLogin = () => {
         setIsLoading(true);
         setError(null);
 
-        const response = await fetch('/user/login/' + userType, {
+        const response = await fetch(`${REACT_APP_PROXY_URL}/user/login/` + userType, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
