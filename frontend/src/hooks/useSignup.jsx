@@ -31,7 +31,7 @@ const useSignup = () => {
             return () => clearTimeout(timer);
         }
 
-        const response = await fetch("register/" + userType, {
+        const response = await fetch("/register/" + userType, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
