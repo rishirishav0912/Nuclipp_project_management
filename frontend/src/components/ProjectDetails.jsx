@@ -34,7 +34,7 @@ function ProjectDetails(props) {
             return
         }
 
-        const response = await fetch(`${REACT_APP_PROXY_URL}/user/auth/employee/` + user.userid + "/" + props.project._id, {
+        const response = await fetch(`${process.env.REACT_APP_PROXY_URL}/user/auth/employee/` + user.userid + "/" + props.project._id, {
             method: 'DELETE',
             session: {
                 authorization: user
@@ -66,7 +66,7 @@ function ProjectDetails(props) {
             payment_status: 'Paid'
         }
 
-        const response = await fetch(`${REACT_APP_PROXY_URL}/user/auth/admin/` + employeeId + "/projects/" + props.project._id, {
+        const response = await fetch(`${process.env.REACT_APP_PROXY_URL}/user/auth/admin/` + employeeId + "/projects/" + props.project._id, {
             method: 'PATCH',
             body: JSON.stringify(project),
             headers: {
