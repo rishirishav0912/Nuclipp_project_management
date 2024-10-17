@@ -24,7 +24,7 @@ function useProfile() {
 
     const profileDetail = { newuserid, prevuserid, name, password, profilePhoto, qrImage }
 
-    const response = await fetch(`${REACT_APP_PROXY_URL}user/auth/` + user.userType + "/update", {
+    const response = await fetch(`${REACT_APP_PROXY_URL}/user/auth/` + user.userType + "/update", {
       method: 'PATCH',
       session: {
         authorization: user
