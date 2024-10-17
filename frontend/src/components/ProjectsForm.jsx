@@ -23,7 +23,7 @@ function ProjectsForm() {
         }
 
         const project = { link, duration, pkg, neeche };
-        const response = await fetch(`${REACT_APP_PROXY_URL}/user/auth/employee/` + user.userid, {
+        const response = await fetch(`${process.env.REACT_APP_PROXY_URL}/user/auth/employee/` + user.userid, {
             method: "POST",
             body: JSON.stringify(project),
             headers: {
