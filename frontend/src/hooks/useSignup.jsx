@@ -31,7 +31,7 @@ const useSignup = () => {
             return () => clearTimeout(timer);
         }
 
-        const response = await fetch(`${REACT_APP_PROXY_URL}/register/` + userType, {
+        const response = await fetch(`${process.env.REACT_APP_PROXY_URL}/register/` + userType, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
