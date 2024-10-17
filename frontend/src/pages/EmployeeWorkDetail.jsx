@@ -19,7 +19,7 @@ function EmployeeWorkDetail(props) {
     useEffect(() => {
 
         const fetchProjects = async () => {
-            const response = await fetch(`${REACT_APP_PROXY_URL}user/auth/admin/` + employeeId + "/projects", {
+            const response = await fetch(`${REACT_APP_PROXY_URL}/user/auth/admin/` + employeeId + "/projects", {
                 method: 'GET',
                 session: {
                     authorization: user
