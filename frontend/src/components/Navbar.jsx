@@ -19,7 +19,7 @@ function Navbar() {
   if (user && user.userType === 'employee') {
 
     const fetchEmployees = async () => {
-      const response = await fetch(`${REACT_APP_PROXY_URL}/user/auth/admin/`, {
+      const response = await fetch(`${process.env.REACT_APP_PROXY_URL}/user/auth/admin/`, {
         method: 'GET',
         session: {
           authorization: user
