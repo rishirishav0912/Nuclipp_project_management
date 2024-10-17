@@ -12,7 +12,7 @@ const AdminHome = () => {
 
     useEffect(() => {
         const fetchEmployees = async () => {
-            const response = await fetch(`${REACT_APP_PROXY_URL}/user/auth/` + user.userType + "/", {
+            const response = await fetch(`${process.env.REACT_APP_PROXY_URL}/user/auth/` + user.userType + "/", {
                 method: 'GET',
                 session: {
                     authorization: user
