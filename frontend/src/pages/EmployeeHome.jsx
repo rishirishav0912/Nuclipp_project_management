@@ -16,6 +16,7 @@ const EmployeeHome = () => {
       const response = await fetch(`${process.env.REACT_APP_PROXY_URL}/user/auth/` + user.userType + "/" + user.userid, {
         method: 'GET',
         headers: {
+          "Content-Type": "application/json",
           "Authorization": user.token
         }
       });
