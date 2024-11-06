@@ -34,7 +34,7 @@ app.use(express.json());
 
 // app.use(cors(options))
 
-app.use("/user",session({secret:"fingerprint_customer",resave: true, saveUninitialized: true}));
+app.use("/user",session({secret:"fingerprint_customer",resave: true, saveUninitialized: true, cookie: { secure: true }}));
 
 // authentication mechanism 
 app.use("/user/auth/*",function auth(req,res,next){
