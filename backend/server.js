@@ -21,7 +21,7 @@ mongoose.connect("mongodb+srv://rishirishav912:Rishi%40912@cluster0.b12kr.mongod
 //middleware
 app.use(cors({
     "origin": "*",
-    "preflightContinue": true,
+    // "preflightContinue": true,
     "allowedHeaders": ['Content-Type', 'Authorization'],
 }))
 app.use(bodyParser.json({limit: '50mb'}));
@@ -39,7 +39,7 @@ app.use("/user",session({secret:"fingerprint_customer",resave: true, saveUniniti
 
 // authentication mechanism 
 app.use("/user/auth/*",function auth(req,res,next){
-console.log(req.headers.Authorization);
+console.log(req.headers);
 if(req.headers.authorization) {
     let token = req.headers.authorization;
      // Access Token
