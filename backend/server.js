@@ -38,10 +38,9 @@ app.use("/user",session({secret:"fingerprint_customer",resave: true, saveUniniti
 
 // authentication mechanism 
 app.use("/user/auth/*",function auth(req,res,next){
-    console.log(req.session);
-if(req.session.authorization) {
-    
-    let token = req.session.authorization['token'];
+console.log(req.headers);
+if(req.headers.authorization) {
+    let token = req.headers.authorization['token'];
      // Access Token
     jwt.verify(token, "fingerprint_customer",(err,user)=>{
         if(!err){

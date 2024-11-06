@@ -27,9 +27,7 @@ function ProjectsForm() {
             method: "POST",
             body: JSON.stringify(project),
             headers: {
-                "Content-Type": "application/json"
-            },
-            session: {
+                "Content-Type": "application/json",
                 authorization: user
             }
         })
