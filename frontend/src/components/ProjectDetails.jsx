@@ -36,8 +36,8 @@ function ProjectDetails(props) {
 
         const response = await fetch(`${process.env.REACT_APP_PROXY_URL}/user/auth/employee/` + user.userid + "/" + props.project._id, {
             method: 'DELETE',
-            session: {
-                authorization: user
+            headers: {
+                "Authorization": user.token
             }
         })
         const json = await response.json();
@@ -62,10 +62,8 @@ function ProjectDetails(props) {
                 method: 'PATCH',
                 body: JSON.stringify({}),
                 headers: {
-                    "Content-Type": "application/json"
-                },
-                session: {
-                    authorization: user
+                    "Content-Type": "application/json",
+                    "Authorization": user.token
                 }
             });
 

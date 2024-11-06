@@ -32,10 +32,8 @@ function ProjectUpdate() {
             method: "PATCH",
             body: JSON.stringify(project),
             headers: {
-                "Content-Type": "application/json"
-            },
-            session: {
-                authorization: user
+                "Content-Type": "application/json",
+                "Authorization": user.token
             }
         })
 

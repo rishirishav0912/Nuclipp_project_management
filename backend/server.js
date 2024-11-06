@@ -21,19 +21,11 @@ mongoose.connect("mongodb+srv://rishirishav912:Rishi%40912@cluster0.b12kr.mongod
 //middleware
 app.use(cors({
     "origin": "*",
-    // "preflightContinue": true,
     "allowedHeaders": ['Content-Type', 'Authorization'],
 }))
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(express.json());
-
-// const options = {
-    // origin:'https://nuclip-project-management-tool.netlify.app',
-    // credentials:true
-// }
-
-// app.use(cors(options))
 
 app.use("/user",session({secret:"fingerprint_customer",resave: true, saveUninitialized: true, cookie: { secure: true }}));
 

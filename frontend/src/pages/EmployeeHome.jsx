@@ -15,8 +15,8 @@ const EmployeeHome = () => {
     const fetchProjects = async () => {
       const response = await fetch(`${process.env.REACT_APP_PROXY_URL}/user/auth/` + user.userType + "/" + user.userid, {
         method: 'GET',
-        session: {
-          authorization: user
+        headers: {
+          "Authorization": user.token
         }
       });
       const json = await response.json();

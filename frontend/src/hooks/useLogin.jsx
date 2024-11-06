@@ -14,7 +14,8 @@ const useLogin = () => {
         const response = await fetch(`${process.env.REACT_APP_PROXY_URL}/user/login/` + userType, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                "Authorization": user.token
             },
             body: JSON.stringify({ userid, password })
         })

@@ -26,11 +26,9 @@ function useProfile() {
 
     const response = await fetch(`${process.env.REACT_APP_PROXY_URL}/user/auth/` + user.userType + "/update", {
       method: 'PATCH',
-      session: {
-        authorization: user
-      },
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        "Authorization": user.token
       },
       body: JSON.stringify(profileDetail)
     })
