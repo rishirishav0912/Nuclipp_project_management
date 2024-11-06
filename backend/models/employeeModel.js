@@ -21,6 +21,9 @@ const employeeSchema = new mongoose.Schema({
     QR_Image: {
         type: String
     },
+    Mobile_Number:{
+        type: Number
+    },
     Projects: [projectSchema]
 })
 

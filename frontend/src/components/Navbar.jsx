@@ -13,7 +13,7 @@ function Navbar() {
   const { logout } = useLogout();
   const { user } = useAuthContext();
   const [profilePhoto,setProfilePhoto] = useState('');
-  const [qrImage,setQrImage] = useState('');
+  // const [qrImage,setQrImage] = useState('');
 
   useEffect(()=>{
   if (user && user.userType === 'employee') {
@@ -27,9 +27,9 @@ function Navbar() {
       });
       const json = await response.json();
 
-      const { Profile_Photo, QR_Image } = (json.filter((employee) => employee.UserId === user.userid))[0];
+      const { Profile_Photo} = (json.filter((employee) => employee.UserId === user.userid))[0];
       setProfilePhoto(Profile_Photo);
-      setQrImage(QR_Image);
+      // setQrImage(QR_Image);
     }
 
     fetchEmployees();
@@ -38,7 +38,7 @@ function Navbar() {
   const handleClick = () => {
     logout();
     setProfilePhoto('');
-    setQrImage('');
+    // setQrImage('');
   }
 
   return (
@@ -52,7 +52,7 @@ function Navbar() {
           user && (<div>
             {user.userType === 'employee' && <img src={profilePhoto} alt="" height='100px' width='100px'></img>}
 
-            {user.userType === 'employee' && <img src={qrImage} alt="" height='100px' width='100px' style={{ marginLeft: '10px' }}></img>}
+            {/* {user.userType === 'employee' && <img src={qrImage} alt="" height='100px' width='100px' style={{ marginLeft: '10px' }}></img>} */}
 
             <span onClick={() => navigate("/profile")} style={{ cursor: 'pointer', marginLeft: '10px' }}>{user.userid}</span>
 

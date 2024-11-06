@@ -10,7 +10,8 @@ function UserProfile() {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [profilePhoto, setProfilePhoto] = useState('');
-    const [qrImage, setQrImage] = useState('');
+    // const [qrImage, setQrImage] = useState('');
+    const [mobile_number, setMobile_number] = useState('');
     const { profile, error, success, isLoading, emptyFields } = useProfile();
 
 
@@ -25,28 +26,28 @@ function UserProfile() {
         photoReader.readAsDataURL(file);
     }
 
-    const handleQRChange = (e) => {
+    // const handleQRChange = (e) => {
 
-        const file = e.target.files[0];
-        const qrReader = new FileReader();
-        qrReader.onloadend = () => {
-            console.log(qrReader.result);
-            setQrImage(qrReader.result);
-        }
-        qrReader.readAsDataURL(file);
-    }
+    //     const file = e.target.files[0];
+    //     const qrReader = new FileReader();
+    //     qrReader.onloadend = () => {
+    //         console.log(qrReader.result);
+    //         setQrImage(qrReader.result);
+    //     }
+    //     qrReader.readAsDataURL(file);
+    // }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        console.log(qrImage, profilePhoto);
+        console.log(profilePhoto);
 
-        await profile(newuserid, user.userid, name, password, profilePhoto, qrImage);
+        await profile(newuserid, user.userid, name, password, profilePhoto, mobile_number);
         setUserid('');
         setName('');
         setPassword('');
         setProfilePhoto('');
-        setQrImage('');
+        setMobile_number('');
     }
 
     return (
@@ -89,17 +90,17 @@ function UserProfile() {
                 {
                     user && (
                         user.userType === 'employee' &&
-                        <label>QR Image (JPEG): </label>
+                        <label>Mobile Number: </label>
                     )
                 }
                 {
                     user && (
                         user.userType === 'employee' &&
                         <input
-                            type='file'
-                            accept="image/jpeg"
-                            onChange={(e) => handleQRChange(e)}
-                            value={qrImage.name}
+                            type='number'
+                            onChange={(e) => setMobile_number(e.target.value)}
+                            value={name}
+                            className={emptyFields.includes('mobile_number') ? 'error' : ''}
                             style={{ width: '50%' }}
                         />
                     )

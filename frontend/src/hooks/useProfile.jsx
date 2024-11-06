@@ -10,7 +10,7 @@ function useProfile() {
   const [isLoading, setIsLoading] = useState(null);
   const [emptyFields, setEmptyFields] = useState([]);
 
-  const profile = async (newuserid, prevuserid, name, password, profilePhoto, qrImage) => {
+  const profile = async (newuserid, prevuserid, name, password, profilePhoto, mobile_number) => {
 
     if (!user) {
       setError("You must be logged in");
@@ -22,7 +22,7 @@ function useProfile() {
     setSuccess(null);
     setEmptyFields([]);
 
-    const profileDetail = { newuserid, prevuserid, name, password, profilePhoto, qrImage }
+    const profileDetail = { newuserid, prevuserid, name, password, profilePhoto, mobile_number }
 
     const response = await fetch(`${process.env.REACT_APP_PROXY_URL}/user/auth/` + user.userType + "/update", {
       method: 'PATCH',

@@ -57,30 +57,44 @@ function ProjectDetails(props) {
         if (props.project.Payment_Status === 'Paid') {
             return
         }
+        
+        const payresponse = await fetch(`${process.env.REACT_APP_PROXY_URL}/user/auth/admin/payment`, {
+                method: 'PATCH',
+                body: JSON.stringify({}),
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                session: {
+                    authorization: user
+                }
+            });
 
-        const project = {
-            link: props.project.Link,
-            duration: props.project.Duration,
-            neeche: props.project.Neeche,
-            pkg: props.project.Package,
-            payment_status: 'Paid'
-        }
 
-        const response = await fetch(`${process.env.REACT_APP_PROXY_URL}/user/auth/admin/` + employeeId + "/projects/" + props.project._id, {
-            method: 'PATCH',
-            body: JSON.stringify(project),
-            headers: {
-                "Content-Type": "application/json"
-            },
-            session: {
-                authorization: user
+        if (payresponse.ok) {
+            const project = {
+                link: props.project.Link,
+                duration: props.project.Duration,
+                neeche: props.project.Neeche,
+                pkg: props.project.Package,
+                payment_status: 'Paid'
             }
-        });
-
-        const json = await response.json();
-
-        if (response.ok) {
-            dispatch({ type: 'SET_PROJECTS', payload: json });
+    
+            const response = await fetch(`${process.env.REACT_APP_PROXY_URL}/user/auth/admin/` + employeeId + "/projects/" + props.project._id, {
+                method: 'PATCH',
+                body: JSON.stringify(project),
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                session: {
+                    authorization: user
+                }
+            });
+    
+            const json = await response.json();
+    
+            if (response.ok) {
+                dispatch({ type: 'SET_PROJECTS', payload: json });
+            }
         }
 
     }

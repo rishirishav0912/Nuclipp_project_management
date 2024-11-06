@@ -75,14 +75,14 @@ const updateUser = async (req, res) => {
                 return res.status(400).json({ error: 'password not strong enough', emptyFields });
             }
             if (userType == "employee") {
-                const { qrImage } = req.body;
+                const { mobile_number } = req.body;
                 await Employee.findOneAndUpdate({ UserId: prevuserid }, {
                     UserId: newuserid,
                     Name: name,
                     Password: password,
                     Profile_Photo: profilePhoto,
-                    QR_Image: qrImage
-                }
+                    Mobile_Number: mobile_number
+                } 
                 ).then(() => {
                     return res.status(201).json({ message: "User details updated successfully" });
                 }).catch((error) => {

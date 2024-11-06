@@ -3,7 +3,9 @@ const router= express.Router();
 const {addProject,
     getprojects,
     deleteProject,
-    updateProject}=require("../controllers/projectController");
+    updateProject,
+    payProject,
+    checkStatus}=require("../controllers/projectController");
 const {
     getemployees,getemployee
 }=require("../controllers/employeeController");
@@ -42,5 +44,11 @@ router.get("/auth/admin/:employeeId/projects",getprojects);
 
 //update a project
 router.patch("/auth/admin/:employeeId/projects/:projectId",updateProject);
+
+//paying for project
+router.post("/auth/admin/payment",payProject);
+
+//status of payment
+router.post("/auth/admin/status/:txnId",checkStatus);
 
 module.exports= router;
