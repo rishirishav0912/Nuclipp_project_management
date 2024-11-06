@@ -31,6 +31,9 @@ const EmployeeHome = () => {
       console.log("hello");
       fetchProjects();
     }
+    else{
+      console.log("hi");
+    }
 
   }
     , [dispatch, user])
