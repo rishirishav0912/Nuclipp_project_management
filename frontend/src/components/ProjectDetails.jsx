@@ -59,7 +59,7 @@ function ProjectDetails(props) {
         }
         
         const payresponse = await fetch(`${process.env.REACT_APP_PROXY_URL}/user/auth/admin/payment`, {
-                method: 'PATCH',
+                method: 'POST',
                 body: JSON.stringify({}),
                 headers: {
                     "Content-Type": "application/json",
