@@ -28,7 +28,7 @@ function ProjectsForm() {
             body: JSON.stringify(project),
             headers: {
                 "Content-Type": "application/json",
-                "authorization": user
+                "Authorization": user
             }
         })
 
