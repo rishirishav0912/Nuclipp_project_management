@@ -5,7 +5,7 @@ const useLogin = () => {
 
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(null);
-    const { dispatch,user } = useAuthContext();
+    const { dispatch} = useAuthContext();
 
     const login = async (userid, password, userType) => {
         setIsLoading(true);
@@ -15,7 +15,6 @@ const useLogin = () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                "Authorization": user.token
             },
             body: JSON.stringify({ userid, password })
         })
