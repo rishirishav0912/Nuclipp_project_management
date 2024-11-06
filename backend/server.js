@@ -39,7 +39,7 @@ app.use("/user",session({secret:"fingerprint_customer",resave: true, saveUniniti
 
 // authentication mechanism 
 app.use("/user/auth/*",function auth(req,res,next){
-console.log(req.headers.Authorization);
+console.log(req.headers);
 if(req.headers.authorization) {
     let token = req.headers.authorization['token'];
      // Access Token
