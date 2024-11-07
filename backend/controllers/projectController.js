@@ -126,6 +126,7 @@ const updateProject = async (req, res) => {
         if (!foundEmp) {
             return res.status(400).json({ error: "employee not found" })
         }
+
         const project = new Project({         // creating project
             Link: link,
             Duration: duration,
@@ -135,8 +136,10 @@ const updateProject = async (req, res) => {
             Payment_Status: 'Unpaid'
         })
         let projects = foundEmp["Projects"]
+
         let p = projects.indexOf(projects.find((project) => project._id == projectId));
         foundEmp["Projects"][p] = project;
+
         foundEmp.save().then(() => {
             return res.status(200).json(foundEmp["Projects"]);
         }).catch((error) => {
@@ -158,7 +161,7 @@ const payProject = async (req, res) => {
             "merchantUserId": MUID,
             "name": name,
             "amount": Number(amount) * 100,
-            "redirectUrl": "https://webhook.site/redirect-url",
+            "redirectUrl": `https://nuclipp-project-management-backend.vercel.app/user/auth/admin/status/${transactionId}`,
             "redirectMode": "POST",
             //"callbackUrl": "https://webhook.site/callback-url",
             "mobileNumber": number,
@@ -188,13 +191,14 @@ const payProject = async (req, res) => {
 
         fetch(prodUrl, options)
             .then(res => {
-                console.log(res.data);
+                console.log(res);
+                console.log(res.json());
                 res.redirect(res.data.instrumentResponse.redirectInfo.url);
             })
             .catch(err => console.error('error:', err));
     }
     catch {
-        res.status(500).json({error:"there is some error in payment"});
+        res.status(500).json({ error: "there is some error in payment" });
     }
 
 }
@@ -209,7 +213,7 @@ const checkStatus = (req, res) => {
     const sha256 = crypto.createHash('sha256').update(payString).digest('hex')
     const checksum = sha256 + '###' + keyIndex
 
-    const url= `https://api.phonepe.com/apis/hermes/pg/v1/status/${merchantId}/${merchantTransactionId}`
+    const url = `https://api.phonepe.com/apis/hermes/pg/v1/status/${merchantId}/${merchantTransactionId}`
 
     const options = {
         method: 'GET',
@@ -222,10 +226,10 @@ const checkStatus = (req, res) => {
     }
 
     fetch(url, options)
-        .then(res =>{
-            if(res.data.success === true) res.status(200).json({"msg":"payment succeeded"})
+        .then(res => {
+            if (res.data.success === true) res.status(200).json({ "msg": "payment succeeded" })
         })
-        .catch(err => res.status(500).json({error:"payment failed"}));
+        .catch(err => res.status(500).json({ error: "payment failed" }));
 }
 
 
