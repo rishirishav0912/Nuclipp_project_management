@@ -76,8 +76,8 @@ const updateUser = async (req, res) => {
             }
             if (userType == "employee") {
                 const { mobile_number } = req.body;
-                
-                if(mobile_number.length !== 10 || isNaN(str)){
+
+                if(mobile_number.length !== 10 || isNaN(mobile_number)){
                     return res.status(400).json({ error: 'mobile number is not correct',emptyFields});
                 } 
 
