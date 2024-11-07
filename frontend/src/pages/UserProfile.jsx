@@ -99,7 +99,7 @@ function UserProfile() {
                         <input
                             type='text'
                             onChange={(e) => setMobile_number(e.target.value)}
-                            value={name}
+                            value={mobile_number}
                             className={emptyFields.includes('mobile_number') ? 'error' : ''}
                             style={{ width: '50%' }}
                         />
