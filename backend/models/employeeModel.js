@@ -22,7 +22,7 @@ const employeeSchema = new mongoose.Schema({
         type: String
     },
     Mobile_Number:{
-        type: Number
+        type: String
     },
     Projects: [projectSchema]
 })

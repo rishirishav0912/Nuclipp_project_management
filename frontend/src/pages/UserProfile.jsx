@@ -97,7 +97,7 @@ function UserProfile() {
                     user && (
                         user.userType === 'employee' &&
                         <input
-                            type='number'
+                            type='text'
                             onChange={(e) => setMobile_number(e.target.value)}
                             value={name}
                             className={emptyFields.includes('mobile_number') ? 'error' : ''}

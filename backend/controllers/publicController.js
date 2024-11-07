@@ -76,6 +76,11 @@ const updateUser = async (req, res) => {
             }
             if (userType == "employee") {
                 const { mobile_number } = req.body;
+                
+                if(mobile_number.length !== 10 || isNaN(str)){
+                    return res.status(400).json({ error: 'mobile number is not correct',emptyFields});
+                } 
+
                 await Employee.findOneAndUpdate({ UserId: prevuserid }, {
                     UserId: newuserid,
                     Name: name,
