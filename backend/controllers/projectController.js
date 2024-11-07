@@ -157,7 +157,7 @@ const payProject = async (req, res) => {
             "merchantTransactionId": transactionId,
             "merchantUserId": MUID,
             "name": name,
-            "amount": toString(amount * 100),
+            "amount": Number(amount) * 100,
             "redirectUrl": "https://webhook.site/redirect-url",
             "redirectMode": "POST",
             //"callbackUrl": "https://webhook.site/callback-url",
@@ -177,7 +177,6 @@ const payProject = async (req, res) => {
         const prodUrl = "https://api.phonepe.com/apis/hermes/pg/v1/pay";
         const options = {
             method: 'POST',
-            url: prodUrl,
             headers: {
                 accept: 'text/plain',
                 'Content-Type': 'application/json',
