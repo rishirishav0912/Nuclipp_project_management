@@ -177,6 +177,8 @@ const payProject = async (req, res) => {
         const sha256 = crypto.createHash('sha256').update(payString).digest('hex');
         const checkSum = sha256 + "###" + keyIndex;
 
+        console.log("checksum",checkSum);
+
         const prodUrl = "https://api.phonepe.com/apis/hermes/pg/v1/pay";
         const options = {
             method: 'POST',
