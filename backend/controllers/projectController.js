@@ -173,7 +173,9 @@ const payProject = async (req, res) => {
         const payload = JSON.stringify(data);
         const payloadMain = Buffer.from(payload).toString("base64");
         const keyIndex = 1;
+        console.log(process.env.SALT_KEY)
         const payString = payloadMain + "/pg/v1/pay" + process.env.SALT_KEY;
+        console.log(payString);
         const sha256 = crypto.createHash('sha256').update(payString).digest('hex');
         const checkSum = sha256 + "###" + keyIndex;
 
