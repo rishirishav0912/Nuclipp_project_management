@@ -129,7 +129,8 @@ const loginUser = async (req, res) => {
         req.session.authorization = {
             token, userid
         }
-        return res.status(200).json({ userid, userType, token });
+        console.log(user);
+        return res.status(200).json({ userid, userType, token});
     }
     else {
         return res.status(400).json({ error: "Invalid Login,User not registered" });

@@ -12,13 +12,13 @@ function ProjectDetails(props) {
     const { dispatch } = useProjectsContext();
     const { user } = useAuthContext();
 
-    const [projectTime , setProjectTime] = useState(formatDistanceToNow(new Date(props.project.createdAt), { addSuffix: true }));
+    const [projectTime, setProjectTime] = useState(formatDistanceToNow(new Date(props.project.createdAt), { addSuffix: true }));
 
     let employeeId = null;
 
-    setInterval(()=>{
+    setInterval(() => {
         setProjectTime(formatDistanceToNow(new Date(props.project.createdAt), { addSuffix: true }));
-    },60000)
+    }, 60000)
 
     const location = useLocation();
     if (location.state !== null) {
@@ -57,15 +57,21 @@ function ProjectDetails(props) {
         if (props.project.Payment_Status === 'Paid') {
             return
         }
-        
+
         const payresponse = await fetch(`${process.env.REACT_APP_PROXY_URL}/user/auth/admin/payment`, {
-                method: 'POST',
-                body: JSON.stringify({}),
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": user.token
-                }
-            });
+            method: 'POST',
+            body: JSON.stringify({
+                transactionId: 'T'+ Date.now(),
+                MUID: "MUID"+ Date.now(),
+                name: user.userid,
+                amount: props.project.Cost,
+                number: user.mobile_number
+            }),
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": user.token
+            }
+        });
 
 
         if (payresponse.ok) {
@@ -76,7 +82,7 @@ function ProjectDetails(props) {
                 pkg: props.project.Package,
                 payment_status: 'Paid'
             }
-    
+
             const response = await fetch(`${process.env.REACT_APP_PROXY_URL}/user/auth/admin/` + employeeId + "/projects/" + props.project._id, {
                 method: 'PATCH',
                 body: JSON.stringify(project),
@@ -87,9 +93,9 @@ function ProjectDetails(props) {
                     authorization: user
                 }
             });
-    
+
             const json = await response.json();
-    
+
             if (response.ok) {
                 dispatch({ type: 'SET_PROJECTS', payload: json });
             }
@@ -117,7 +123,7 @@ function ProjectDetails(props) {
             {
                 user &&
                 (
-                    user.userType === 'employee' && 
+                    user.userType === 'employee' &&
                     props.project.Payment_Status === 'Unpaid' &&
                     <span className="material-symbols-outlined"
                         style={{ marginRight: '45px' }}
