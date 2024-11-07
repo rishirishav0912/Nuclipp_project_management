@@ -183,7 +183,7 @@ const payProject = async (req, res) => {
         const options = {
             method: 'POST',
             headers: {
-                accept: 'text/plain',
+                accept: 'application/json',
                 'Content-Type': 'application/json',
                 'X-VERIFY': checkSum
             },
