@@ -181,7 +181,7 @@ const payProject = async (req, res) => {
 
         console.log("checksum", checkSum);
 
-        const prodUrl = "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay";
+        const prodUrl = "https://api.phonepe.com/apis/hermes/pg/v1/pay";
         const options = {
             method: 'POST',
             headers: {
@@ -193,10 +193,11 @@ const payProject = async (req, res) => {
 
         }
 
-        await fetch(prodUrl, options).then(res => {
+        await fetch(prodUrl, options).then(async res => {
             console.log(res);
-            console.log(res.json());
-            res.redirect(res.data.instrumentResponse.redirectInfo.url);
+            const json = await res.json();
+            console.log(json);
+            res.redirect(json.instrumentResponse.redirectInfo.url);
         }).catch(err => console.error('error:', err));
 
     }
