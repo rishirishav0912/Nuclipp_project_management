@@ -197,7 +197,7 @@ const payProject = async (req, res) => {
         await fetch(prodUrl, options).then(async response => {
             console.log(response);
             const json = await response.json();
-            console.log(json);
+            console.log(json.data.instrumentResponse.redirectInfo);
             return res.redirect(json.data.instrumentResponse.redirectInfo);
         }).catch(err => console.error('error:', err));
 
