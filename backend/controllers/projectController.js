@@ -182,7 +182,7 @@ const payProject = async (req, res) => {
 
         console.log("checksum is :",checkSum);
 
-        const prodUrl = "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay";
+        const prodUrl = "https://api.phonepe.com/apis/hermes/pg/v1/pay";
         const options = {
             method: 'POST',
             headers: {
