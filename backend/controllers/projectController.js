@@ -163,7 +163,7 @@ const payProject = async (req, res) => {
             "amount": Number(amount) * 100,
             "redirectUrl": `https://nuclipp-project-management-backend.vercel.app/user/auth/admin/status/${transactionId}`,
             "redirectMode": "POST",
-            //"callbackUrl": "https://webhook.site/callback-url",
+            "callbackUrl": "https://webhook.site/callback-url",
             "mobileNumber": number,
             "paymentInstrument": {
                 "type": "PAY_PAGE"
@@ -181,7 +181,7 @@ const payProject = async (req, res) => {
 
         console.log("checksum", checkSum);
 
-        const prodUrl = "https://api.phonepe.com/apis/hermes/pg/v1/pay";
+        const prodUrl = "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay";
         const options = {
             method: 'POST',
             headers: {
