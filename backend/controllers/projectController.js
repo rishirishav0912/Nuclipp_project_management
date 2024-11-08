@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const { Project } = require("../models/projectModel");
 const Employee = require("../models/employeeModel");
 const crypto = require('crypto');
+const { response } = require("express");
 // const fetch = require('node-fetch');
 
 
@@ -193,9 +194,9 @@ const payProject = async (req, res) => {
 
         }
 
-        await fetch(prodUrl, options).then(async res => {
-            console.log(res);
-            const json = await res.json();
+        await fetch(prodUrl, options).then(async response => {
+            console.log(response);
+            const json = await response.json();
             console.log(json);
             res.redirect(json.data.instrumentResponse.redirectInfo.url);
         }).catch(err => console.error('error:', err));
@@ -230,8 +231,8 @@ const checkStatus = (req, res) => {
     }
 
     fetch(url, options)
-        .then(res => {
-            if (res.data.success === true) res.status(200).json({ "msg": "payment succeeded" })
+        .then(response => {
+            if (response.data.success === true) res.status(200).json({ "msg": "payment succeeded" })
         })
         .catch(err => res.status(500).json({ error: "payment failed" }));
 }
