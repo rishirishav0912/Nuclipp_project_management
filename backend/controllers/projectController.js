@@ -193,7 +193,7 @@ const payProject = async (req, res) => {
 
         }
 
-        fetch(prodUrl, options)
+        await fetch(prodUrl, options)
             .then(res => {
                 console.log(res);
                 console.log(res.json());
