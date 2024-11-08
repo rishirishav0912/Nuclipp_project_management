@@ -164,7 +164,7 @@ const payProject = async (req, res) => {
             "amount": Number(amount) * 100,
             "redirectUrl": `https://nuclipp-project-management-backend.vercel.app/user/auth/admin/status/${transactionId}`,
             "redirectMode": "POST",
-            //"callbackUrl": "https://webhook.site/callback-url",
+            "callbackUrl": "https://mercury-uat.phonepe.com/transact/simulator?token=XYaZFrLI6AWOhXBHAJaWsTDb8s16ZQ6sZJsCP4Z",
             "mobileNumber": number,
             "paymentInstrument": {
                 "type": "PAY_PAGE"
@@ -203,7 +203,7 @@ const payProject = async (req, res) => {
 
     }
     catch {
-        res.status(500).json({ error: "there is some error in payment" });
+        return res.status(500).json({ error: "there is some error in payment" });
     }
 
 }
@@ -232,7 +232,7 @@ const checkStatus = (req, res) => {
 
     fetch(url, options)
         .then(response => {
-            if (response.data.success === true) res.status(200).json({ "msg": "payment succeeded" })
+            if (response.data.success === true) return res.status(200).json({ "msg": "payment succeeded" })
         })
         .catch(err => res.status(500).json({ error: "payment failed" }));
 }
