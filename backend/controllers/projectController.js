@@ -179,7 +179,7 @@ const payProject = async (req, res) => {
         const sha256 = crypto.createHash('sha256').update(payString).digest('hex');
         const checkSum = sha256 + "###" + keyIndex;
 
-        console.log("checksum",checkSum);
+        console.log("checksum", checkSum);
 
         const prodUrl = "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay";
         const options = {
@@ -193,13 +193,12 @@ const payProject = async (req, res) => {
 
         }
 
-        await fetch(prodUrl, options)
-            .then(res => {
-                console.log(res);
-                console.log(res.json());
-                res.redirect(res.data.instrumentResponse.redirectInfo.url);
-            })
-            .catch(err => console.error('error:', err));
+        await fetch(prodUrl, options).then(res => {
+            console.log(res);
+            console.log(res.json());
+            res.redirect(res.data.instrumentResponse.redirectInfo.url);
+        }).catch(err => console.error('error:', err));
+
     }
     catch {
         res.status(500).json({ error: "there is some error in payment" });
