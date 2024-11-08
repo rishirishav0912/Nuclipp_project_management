@@ -164,7 +164,6 @@ const payProject = async (req, res) => {
             "amount": Number(amount) * 100,
             "redirectUrl": `https://nuclipp-project-management-backend.vercel.app/user/auth/admin/status/${transactionId}`,
             "redirectMode": "POST",
-            "callbackUrl": "https://mercury-uat.phonepe.com/transact/simulator?token=XYaZFrLI6AWOhXBHAJaWsTDb8s16ZQ6sZJsCP4Z",
             "mobileNumber": number,
             "paymentInstrument": {
                 "type": "PAY_PAGE"
