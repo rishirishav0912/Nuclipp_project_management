@@ -179,7 +179,7 @@ const payProject = async (req, res) => {
         const sha256 = crypto.createHash('sha256').update(payString).digest('hex');
         const checkSum = sha256 + "###" + keyIndex;
 
-        console.log("checksum", checkSum);
+        console.log("checksum is :",checkSum);
 
         const prodUrl = "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay";
         const options = {
