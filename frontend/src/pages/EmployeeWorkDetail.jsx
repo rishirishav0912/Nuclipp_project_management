@@ -5,7 +5,6 @@ import { useAuthContext } from '../hooks/useAuthContext'
 
 //components
 import ProjectDetails from '../components/ProjectDetails';
-// import ProjectsForm from '../components/ProjectsForm';
 
 function EmployeeWorkDetail(props) {
 
@@ -49,7 +48,6 @@ function EmployeeWorkDetail(props) {
                     return (<ProjectDetails key={project._id} project={project} />);
                 })}
             </div>
-            {/* <ProjectsForm /> */}
         </div>
     )
 }
