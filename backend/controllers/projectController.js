@@ -3,8 +3,6 @@ const { Project } = require("../models/projectModel");
 const Employee = require("../models/employeeModel");
 const crypto = require('crypto');
 const { response } = require("express");
-// const fetch = require('node-fetch');
-
 
 //price a/c to package
 const prices = {
@@ -197,7 +195,7 @@ const payProject = async (req, res) => {
             console.log(response);
             const json = await response.json();
             console.log(json.data.instrumentResponse.redirectInfo);
-            res.redirect(json.data.instrumentResponse.redirectInfo.url);
+            res.status(301).redirect(json.data.instrumentResponse.redirectInfo.url);
         }).catch(err => console.error('error:', err));
 
     }
