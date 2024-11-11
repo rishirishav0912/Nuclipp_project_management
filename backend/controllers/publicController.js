@@ -126,9 +126,9 @@ const loginUser = async (req, res) => {
     let user = await authenticatedUser(userType, userid, password);
     if (user) {
         const token = jwt.sign({ userid }, 'fingerprint_customer');
-        req.session.authorization = {
-            token, userid
-        }
+        // req.session.authorization = {
+        //     token, userid
+        // }
         return res.status(200).json({ userid, userType, token, mobile_number : user.Mobile_Number});
     }
     else {
