@@ -13,7 +13,6 @@ const EmployeeHome = () => {
 
   useEffect(() => {
     const fetchProjects = async () => {
-      console.log("hello");
       const response = await fetch(`${process.env.REACT_APP_PROXY_URL}/user/auth/` + user.userType + "/" + user.userid, {
         method: 'GET',
         headers: {
