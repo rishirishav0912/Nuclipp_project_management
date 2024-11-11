@@ -3,7 +3,6 @@ const express= require("express");
 const mongoose= require("mongoose");
 const jwt = require("jsonwebtoken");
 const bodyParser = require("body-parser");
-const session = require("express-session");
 const publicRoutes= require("./routes/public");
 const userRoutes=require("./routes/auth_user");
 const cors = require('cors')
@@ -26,8 +25,6 @@ app.use(cors({
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(express.json());
-
-app.use("/user",session({secret:"fingerprint_customer",resave: true, saveUninitialized: true, cookie: { secure: true }}));
 
 // authentication mechanism 
 app.use("/user/auth/*",function auth(req,res,next){
