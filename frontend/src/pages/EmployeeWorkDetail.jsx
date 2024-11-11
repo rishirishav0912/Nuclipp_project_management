@@ -43,7 +43,6 @@ function EmployeeWorkDetail(props) {
     return (
         <div className="home">
             <div className='workouts'>
-                <nav><button>Pay all</button></nav>
                 {projects && projects.map((project) => {
                     return (<ProjectDetails key={project._id} project={project} />);
                 })}
