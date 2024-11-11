@@ -28,11 +28,7 @@ const EmployeeHome = () => {
     }
 
     if (user) {
-      console.log("hello");
       fetchProjects();
-    }
-    else{
-      console.log("hi");
     }
 
   }
